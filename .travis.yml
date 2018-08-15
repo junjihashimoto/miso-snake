@@ -12,7 +12,11 @@ install:
 script:
   - stack setup --no-terminal
   - stack update --no-terminal
-  - stack install
+  - stack build
+  - mkdir static
+  - rm -f static/*
+  - cp $(stack path --local-install-root)/bin/*.jsexe/* static
+
 
 cache:
   timeout: 2000
