@@ -1,17 +1,18 @@
-sudo: false
-language: generic
+language: "haskell"
+sudo: required
+dist: trusty
 
 install:
   # stack
   - mkdir -p ~/.local/bin
-  - travis_retry curl -sSL https://get.haskellstack.org/ | sh
+  - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.1/stack-1.6.1-linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
   - export PATH=~/.local/bin:$PATH
   - stack --no-terminal --version
 
 script:
   - stack setup --no-terminal
   - stack update --no-terminal
-  - stack test
+  - stack install
 
 cache:
   timeout: 2000
@@ -20,4 +21,4 @@ cache:
   - $HOME/.ghc
   - $HOME/.stack
   - .stack-work/
-apt: true
+  apt: true
