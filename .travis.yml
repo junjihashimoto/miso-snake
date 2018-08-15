@@ -26,3 +26,12 @@ cache:
   - $HOME/.stack
   - .stack-work/
   apt: true
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: static
+  repo: junjihashimoto/miso-snake
+  on:
+    branch: master
