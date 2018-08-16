@@ -11,6 +11,7 @@ install:
 
 script:
   - stack setup --no-terminal
+  - rm -f /opt/cabal/2.0/bin/cabal
   - stack update --no-terminal
   - stack build
   - mkdir static
