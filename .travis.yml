@@ -10,8 +10,8 @@ install:
   - stack --no-terminal --version
 
 script:
+  - sudo rm -f /opt/cabal
   - stack setup --no-terminal
-  - sudo rm -f /opt/cabal/2.0/bin/cabal
   - stack update --no-terminal
   - stack build
   - mkdir static
