@@ -1,7 +1,8 @@
 language: "haskell"
 sudo: required
 dist: trusty
-
+ghc:
+  - "8.4.1"
 install:
   # stack
   - mkdir -p ~/.local/bin
@@ -10,7 +11,6 @@ install:
   - stack --no-terminal --version
 
 script:
-  - sudo rm -rf /opt/cabal
   - stack setup --no-terminal
   - stack update --no-terminal
   - stack build
